@@ -1,71 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cat World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff8f0;
+      background: linear-gradient(135deg, #ffe4e1, #fff8f0);
       color: #333;
     }
 
     header {
-      background-color: #ffcccb;
-      padding: 20px;
+      background: linear-gradient(to right, #ffb6b9, #ffcccb);
+      padding: 40px 20px;
       text-align: center;
+      border-bottom: 4px solid #fa9e9e;
     }
 
     header h1 {
       margin: 0;
       font-size: 3em;
+      color: #6b1c1c;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #842121;
     }
 
     .container {
       padding: 40px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       text-align: center;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #d6336c;
     }
 
     ul.cat-list {
       list-style: none;
       padding: 0;
-      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     ul.cat-list li {
-      background-color: #ffe4e1;
+      background-color: #fff;
       margin: 10px 0;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 1.2em;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 1.1em;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    ul.cat-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     ul.cat-list a {
       color: #d6336c;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     ul.cat-list a:hover {
       text-decoration: underline;
     }
 
+    p {
+      max-width: 700px;
+      margin: 30px auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #ffe4e1;
-      margin-top: 40px;
+      background-color: #ffdde0;
+      color: #6b1c1c;
+      margin-top: 60px;
+      font-size: 0.9em;
     }
 
     @media (max-width: 600px) {
       header h1 {
         font-size: 2em;
+      }
+
+      h2 {
+        font-size: 1.5em;
       }
     }
   </style>
@@ -80,9 +115,9 @@
   <div class="container">
     <h2>Famous Internet Cats</h2>
     <ul class="cat-list">
-      <li>🐱 <a href="https://www.google.com/search?q=floppa&rlz=1C1YTUH_enUS1107US1107&oq=floppa&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIKCAEQABixAxiABDIKCAIQABixAxiABDIKCAMQABixAxiABDIHCAQQABiABDIKCAUQABixAxiABDIKCAYQABixAxiABDIHCAcQABiABDIKCAgQABixAxiABDIKCAkQABixAxiABNIBBzgwNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8&safe=active&ssui=on" target="_blank">Floppa</a> – The meme legend caracal</li>
+      <li>🐱 <a href="https://www.google.com/search?q=floppa" target="_blank">Floppa</a> – The meme legend caracal</li>
       <li>🐱 <a href="https://www.instagram.com/unico_uniuni/?hl=en" target="_blank">Uni</a> – The TikTok superstar with cute expressions</li>
-      <li>🐱 <a href="https://www.google.com/search?q=grumpy+cat&rlz=1C1YTUH_enUS1107US1107&oq=grumpy+cat&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyDQgBEC4Y1AIYsQMYgAQyDQgCEC4Y1AIYsQMYgAQyCggDEC4YsQMYgAQyBwgEEAAYgAQyCggFEC4YsQMYgAQyBwgGEC4YgAQyBwgHEAAYgAQyDQgIEC4YrwEYxwEYgATSAQgxOTU5ajBqNKgCALACAA&sourceid=chrome&ie=UTF-8&safe=active&ssui=on#vhid=MvtwFz0IacEXJM&vssid=_Bgw2aLKyIPif5NoP0IKE2Q0_58" target="_blank">Grumpy Cat</a> – The original sourpuss meme queen</li>
+      <li>🐱 <a href="https://www.google.com/search?q=grumpy+cat" target="_blank">Grumpy Cat</a> – The original sourpuss meme queen</li>
       <li>🐱 <a href="https://en.wikipedia.org/wiki/Lil_Bub" target="_blank">Lil Bub</a> – The magical cat with a sweet tongue-out smile</li>
       <li>🐱 <a href="https://www.youtube.com/watch?v=2yJgwwDcgV8" target="_blank">Nyan Cat</a> – The pixelated, pop-tart-fueled space cat</li>
       <li>🐱 <a href="https://www.instagram.com/maruhanamogu/" target="_blank">Maru</a> – The box-loving cat from Japan</li>
@@ -90,7 +125,7 @@
       <li>🐱 <a href="https://tenor.com/search/longcat-gif-gifs" target="_blank">Longcat</a> – Internet's vertically gifted feline</li>
     </ul>
 
-    <h2 style="margin-top: 50px;">Why We Love Cats</h2>
+    <h2>Why We Love Cats</h2>
     <p>
       Cats are quirky, cuddly, and often hilarious. From viral memes to iconic personalities, they’ve captured the hearts of millions online — and they aren't stopping any time soon!
     </p>
