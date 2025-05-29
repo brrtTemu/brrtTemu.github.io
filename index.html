@@ -136,12 +136,11 @@
 
     /* Floating Cat Gifs */
     .floating-cat {
-      position: absolute;
-      width: 90px;
-      z-index: 2;
-      animation: float 6s ease-in-out infinite;
+      position: fixed;
+      width: 80px;
+      z-index: 3;
+      animation: float 4s ease-in-out infinite;
       pointer-events: none;
-      opacity: 0.9;
     }
 
     @keyframes float {
@@ -181,7 +180,7 @@
   <img src="https://i.imgur.com/fhvKYKW.png" class="corner-decor" />
   <img src="https://i.imgur.com/fhvKYKW.png" class="corner-decor-right" />
 
-  <!-- Floating cats (placed only on sides) -->
+  <!-- Floating cats (non-overlapping) -->
   <script>
     const catGifs = [
       "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
@@ -194,17 +193,41 @@
       "https://media.giphy.com/media/mCRJDo24UvJMA/giphy.gif"
     ];
 
-    for (let i = 0; i < 8; i++) {
+    const numberOfCats = 8;
+    const catsPerSide = numberOfCats / 2;
+    const sidePositions = { left: [], right: [] };
+
+    // Calculate vertical positions evenly spaced with small random offset
+    function generatePositions(count) {
+      const positions = [];
+      const spacing = 90 / count; // leave 5% top & bottom margin
+      for (let i = 0; i < count; i++) {
+        // Base evenly spaced position + random offset up to ±3%
+        const basePos = 5 + i * spacing;
+        const offset = (Math.random() * 6) - 3; // -3% to +3%
+        let pos = basePos + offset;
+        // Clamp between 5 and 95
+        pos = Math.min(95, Math.max(5, pos));
+        positions.push(pos);
+      }
+      return positions;
+    }
+
+    sidePositions.left = generatePositions(catsPerSide);
+    sidePositions.right = generatePositions(catsPerSide);
+
+    for (let i = 0; i < numberOfCats; i++) {
       const img = document.createElement('img');
       img.src = catGifs[Math.floor(Math.random() * catGifs.length)];
       img.className = 'floating-cat';
 
-      img.style.top = `${Math.random() * 85 + 5}%`;
+      const side = i < catsPerSide ? 'left' : 'right';
+      const index = i % catsPerSide;
 
-      const side = Math.random() < 0.5 ? 'left' : 'right';
-      img.style[side] = `${Math.random() * 5 + 1}%`; // close to left or right edge
-
+      img.style.top = `${sidePositions[side][index]}%`;
+      img.style[side] = `${Math.random() * 4 + 1}%`; // close to edge, 1% to 5%
       img.style.animationDelay = `${Math.random()}s`;
+
       document.body.appendChild(img);
     }
   </script>
@@ -258,5 +281,6 @@
       setTimeout(() => sparkle.remove(), 600);
     });
   </script>
+
 </body>
 </html>
