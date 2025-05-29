@@ -137,10 +137,11 @@
     /* Floating Cat Gifs */
     .floating-cat {
       position: absolute;
-      width: 60px;
-      z-index: 3;
-      animation: float 4s ease-in-out infinite;
+      width: 90px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
       pointer-events: none;
+      opacity: 0.9;
     }
 
     @keyframes float {
@@ -180,21 +181,29 @@
   <img src="https://i.imgur.com/fhvKYKW.png" class="corner-decor" />
   <img src="https://i.imgur.com/fhvKYKW.png" class="corner-decor-right" />
 
-  <!-- Floating cats (randomly placed) -->
+  <!-- Floating cats (placed only on sides) -->
   <script>
     const catGifs = [
       "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
       "https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif",
       "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
-      "https://media.giphy.com/media/tBxyh2hbwMiqc/giphy.gif"
+      "https://media.giphy.com/media/tBxyh2hbwMiqc/giphy.gif",
+      "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+      "https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif",
+      "https://media.giphy.com/media/12HZukMBlutpoQ/giphy.gif",
+      "https://media.giphy.com/media/mCRJDo24UvJMA/giphy.gif"
     ];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 8; i++) {
       const img = document.createElement('img');
       img.src = catGifs[Math.floor(Math.random() * catGifs.length)];
       img.className = 'floating-cat';
-      img.style.top = `${Math.random() * 80 + 10}%`;
-      img.style.left = `${Math.random() * 80 + 10}%`;
+
+      img.style.top = `${Math.random() * 85 + 5}%`;
+
+      const side = Math.random() < 0.5 ? 'left' : 'right';
+      img.style[side] = `${Math.random() * 5 + 1}%`; // close to left or right edge
+
       img.style.animationDelay = `${Math.random()}s`;
       document.body.appendChild(img);
     }
